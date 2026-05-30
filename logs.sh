@@ -12,10 +12,9 @@ check () {
     echo " error at $1 : $2 "
 }
 
-trap 'check "${LINE_NO}" : "${BASH_COMMAND}" ' ERR
+trap 'check "${LINE_NO}" : "${BASH_COMMAND}" '  ERR
 
-
-mkdir -p /var/logs/shell-logs
+mkdir /var/logs/shell-logs
 
 if [ $USER -eq 0 ]
 then 
