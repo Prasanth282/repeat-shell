@@ -1,15 +1,18 @@
 #!/bin/bash
 
-source ./varible.sh
+NUM=${1..10}
 
-while IFS= read -r num
+for i in $NUM 
 do 
-  echo " $num "
-  if [ $num%2 -eq 0 ]
+  if [ $i%2 -eq 0 ]
   then 
-      echo " $num is even "
+      echo " $i is even"
+      EVEN="$i" 
+  else 
+     echo " not evn nbr "
+     exit 1
   fi 
-  echo " print $num*$num "
-  
 
-done <varible.sh 
+  echo -e " print $EVEN*2 \n "
+
+done 
