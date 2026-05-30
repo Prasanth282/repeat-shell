@@ -40,8 +40,8 @@ if [ ! -z "$FILES" ]
 then 
    echo ""$files" are present in the path "
    TIME_STAMP=$(date +%f-%H-%M-%S)
-   ZIP_FILE=$(DESTI_DIR/$@-$TIME_STAMP.bkp)
-   FILES=$(find $SOURCE_DIR -name "*.log" -mtime+$DAYS) | zip -@ $PATH 
+   ZIP_FILE="$DESTI_DIR/$@-$TIME_STAMP.bkp"
+   FILES=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS) | zip -@ $ZIP_FILE
    if [ -f "$ZIP_FILE" ]
    then 
        echo " files zipped "
