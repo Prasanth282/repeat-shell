@@ -9,7 +9,7 @@ LOG_FILE="$PATH/$SCRIPT_NAME.log"
 set -e 
 
 check () {
-    echo error at $1 : $2
+    echo " error at $1 : $2 "
 }
 
 trap 'check "${LINE_NO}" : "${BASH_COMMAND}" ' ERR
