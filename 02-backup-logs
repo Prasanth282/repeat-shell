@@ -1,0 +1,71 @@
+#!/bin/bash
+
+#source and destination directory to take backup and how many days older files backup required 
+#check provided details sufficient or not 
+#check source and destination directory details exist or not 
+#check files are exist or not with the old logs 
+#if exists take back up and delete the old logs from the source path 
+#check whether files are deleted or not 
+
+SOURCE_DIR=$1
+DESTI_DIR=$2
+DAYS=$(3:-14)
+
+if [ $# -lt 2 ]
+then 
+    echo " usage :: sh <source directory> <destination directory> <days> "
+    exit 1
+fi 
+
+if [ $1 -d -eq 0 ]
+then 
+    echo " directorys exist "
+else 
+    echo " directory not exists "
+    exit 1
+fi 
+
+if [ $2 -d -eq 0 ]
+then 
+    echo " directorys exist "
+else 
+    echo " directory not exists "
+    exit 1
+fi 
+
+
+FILES=$(find $SOURCE_DIR -name "*.log" -mtime+$DAYS)
+
+if [ -z -ne "$FILES" ]
+then 
+   echo ""$files" are present in the path "
+   TIME_STAMP=$(date +%f-%H-%M-%S)
+   ZIP_FILE=$(DESTI_DIR/$@-$TIME_STAMP.bkp)
+   FILES=$(find $SOURCE_DIR -name "*.log" -mtime+$DAYS) | zip -@ $PATH 
+   if [ -f "$ZIP_FILE" ]
+   then 
+       echo " files zipped "
+    else 
+       echo " zipping failed "
+       exit 1
+    fi
+    while IFS= read -r files
+    do 
+       echo " deleting $files "
+       rm -rf $files
+    done <<< $FILES
+
+    if [ ! -f $SOURCE_DIR ]
+    then 
+        echo " files deleted success "
+    else 
+        echo " deletion failed "
+        exit 1
+    fi 
+
+else 
+    echo " no files found to zip "
+    exit 1
+
+   
+
