@@ -2,7 +2,7 @@
 
 source ./varible.sh
 
-while IFS=read -r num
+while IFS= read -r num
 do 
   echo " $num "
   if [ $num%2 -eq 0 ]
