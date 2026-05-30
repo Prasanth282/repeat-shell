@@ -19,4 +19,4 @@ do
 
 done <<< $DISK_USAGE
 
-echo -e " server details : $IP : $MSG "
+echo -e "server details : $IP : $MSG"
