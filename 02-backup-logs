@@ -9,7 +9,7 @@
 
 SOURCE_DIR=$1
 DESTI_DIR=$2
-DAYS=$(3:-14)
+DAYS=${3:-14}
 
 if [ $# -lt 2 ]
 then 
@@ -17,7 +17,7 @@ then
     exit 1
 fi 
 
-if [ $1 -d -eq 0 ]
+if [ -d -eq 0 ]
 then 
     echo " directorys exist "
 else 
