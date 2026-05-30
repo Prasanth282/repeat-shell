@@ -14,9 +14,10 @@ do
   PARTITION=$(echo "$line" | awk '{print $7}' )
   if [ $USAGE -ge $THRESHOLD ]
   then 
-      MSG+="high disk usage found in : $USAGE : $PARTITION \n"
+      MSG+=" $USAGE : $PARTITION \n"
   fi    
 
 done <<< $DISK_USAGE
 
-echo -e "server details : $IP : $MSG"
+echo -e " High disk usage found in server details : $IP"
+echo -e "$MSG" 
