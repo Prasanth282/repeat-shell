@@ -2,6 +2,8 @@
 
 USER=$(id -u)
 
+mkdir -p /var/logs/shell-logs
+
 PATH="/var/logs/shell-logs"
 SCRIPT_NAME="$0"
 LOG_FILE="$PATH/$SCRIPT_NAME.log" 
