@@ -14,7 +14,6 @@ check () {
 
 trap 'check "${LINE_NO}" : "${BASH_COMMAND}" '  ERR
 
-mkdir /var/logs/shell-logs
 
 if [ $USER -eq 0 ]
 then 
