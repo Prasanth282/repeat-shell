@@ -14,7 +14,7 @@ check () {
     echo " error at $1 : $2 "
 }
 
-trap 'check "${LINE_NO}" : "${BASH_COMMAND}" '  ERR
+trap 'check "${LINENO}" "${BASH_COMMAND}"' ERR
 
 
 if [ $USER -eq 0 ]
